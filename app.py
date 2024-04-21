@@ -1,3 +1,4 @@
+from aiohttp import get_payload
 from flask import Flask, redirect, request, abort, render_template, jsonify, url_for, session
 import pickle 
 import numpy as np
@@ -28,6 +29,26 @@ with open('model2.pkl','rb') as model2_file:
 def home():
     return render_template('home.html')
     
+def classifyRequest(payload):
+    resu = get_payload(payload)
+    return float(model2.predict)
+
+@app.route('/classify', methods = ['POST'])
+def classify_handler():
+    payload = request.form['payload']
+    result =get_payload(payload)  
+    class_name = 'Malicious' if result == 1 else 'Normal'
+    print('payload:', payload)
+    print('result:', result)
+
+    print('class_name:', class_name)
+
+    return {
+        'payload' : payload,
+        'result' : result,
+        'class_name': class_name
+    } #return json 
+
 @app.route('/demo.html/', methods=['GET', 'POST'])
 def demo():
     if (request.method == 'POST'):
@@ -40,19 +61,7 @@ def home2():
     return render_template('home.html')
 
 
-# @app.route('/classify', methods = ['POST'])
-# def classify_handler():
-#     payload = request.form['payload']
-#     result =final_result_saved(payload)  # type: ignore
-#     class_name = 'Malicious' if result == 0 else 'Normal'
-#     print('file_path:', file_path)
-#     print('result:', result)
 
-#     print('class_name:', class_name)
-
-#     return {
-#         'class_name': class_name
-#     }
 
 
 # Basic WAF function
