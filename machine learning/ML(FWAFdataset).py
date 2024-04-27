@@ -28,10 +28,10 @@ fwaf_data=pd.read_csv('payload_full.csv')
 print('Done!')
 
 #Data preparation 
-n_features=fwaf_data.shape[1]
-n_samples =fwaf_data.shape[0]
-print("Number of samples:", n_samples)
-print("Number of features:", n_features)
+n_features=fwaf_data.shape[1] #shape[1] --> no of columns
+n_samples =fwaf_data.shape[0] #shape[0] --> no of rows
+print("Number of samples:", n_samples) #number of rows in the dataset
+print("Number of features:", n_features) #number of columns in the dataset
 
 #printing head and tail of the dataset
 print('Head')
@@ -39,35 +39,52 @@ fwaf_data.head()
 print('Tail')
 fwaf_data.tail()
 
+#to determine the datatype for each  column in the dataset
+fwaf_data.dtypes
+
 #printing the columns of the dataset
 print('Dataset Columns')
 fwaf_data.columns
+
+#data visualization
+sns.set_style('darkgrid')
+sns.countplot(data= fwaf_data, x='label')
 
 #visualizing format
 feature_names=[ 'payload', 'length', 'attack_type', 'label']
 X=fwaf_data[feature_names]
 print(X)
 
-#preprocessing [on column payload]
+#payload column before transformation
 print(X.payload)
 
+
+#payload column after transformation
 X['payload'] = X['payload'].astype(str)
 X['payload'] = X['payload'].str.extract(r'(\d+)')
 X['payload'] = pd.to_numeric(X['payload'], errors='coerce').fillna(0)
-print(X.payload)
+print(X.payload) #payload displayed after being cleaned and converted to numeric payload values
 
+#attack_type column after transformation
 X['attack_type'] = X['attack_type'].astype(str)
 X['attack_type'] = X['attack_type'].str.extract(r'(\d+)')
 X['attack_type'] = pd.to_numeric(X['attack_type'], errors='coerce').fillna(0)
-print(X.attack_type)
+print(X.attack_type) #attack_type displayed after being cleaned and converted to numeric attack_type values
 
+
+
+#filtering the length column  based on a condition in which attack_type column is equal to norm
 filtered_length = X.loc[X['attack_type'] == 'norm', 'length']
 print(filtered_length)
 
+
+
+#length column after transformation
 X['length'] = X['length'].astype(str)
 X['length'] = X['length'].str.extract(r'(\d+)')
 X['length'] = pd.to_numeric(X['length'], errors='coerce').fillna(0)
-print(X.length)
+print(X.length) #length displayed after being cleaned and converted to numeric length values
+
 
 
 #buidling final dataset to be used for classification
@@ -94,7 +111,7 @@ x_tr.tail(5)
 
 
 ###Random Forest Classifier###
-random_forest_model = RandomForestClassifier(random_state=1000)
+random_forest_model = RandomForestClassifier(random_state=1)
 print('Computing....')
 # Fit the model
 random_forest_model.fit(x_tr,y_tr)

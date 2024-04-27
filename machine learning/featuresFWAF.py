@@ -35,7 +35,7 @@ class ExtractFeatures():
         features.append(len(payload))
 
         # Presence of certain keywords or patterns
-        keywords = ['exec', 'cmd', 'wget', 'curl']
+        keywords = ['select', 'union', 'where', '<script>']
         keyword_presence = [1 if re.search(keyword, payload, re.IGNORECASE) else 0 for keyword in keywords]
         features.extend(keyword_presence)
 
