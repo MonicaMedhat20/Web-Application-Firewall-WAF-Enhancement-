@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <title>DEEPSHIELD</title>
+    <link rel="stylesheet" href="style2.css">
+        
+</head>
+<body>
+    <header>
+        <img  src="deepshield.jpg" href="WAFHome.html" alt="DEEPSHIELD Logo" class="logo">
+        <h1>DEEPSHIELD</h1>
+    </header>
+    <nav>
+        <a href="WAFHome.html">Home</a>
+        <a href="Test.html">Demo</a>
+        <a href="WAFDashboard.html">Dashboard</a>
+        <a href="WAFContact.html">Contact</a>
+    </nav>
+    <div class="banner">
+        <div>
+            <h1>We Help Securing Businesses <br>to Grow and Succeed</h1>
+            <p>With our security expertise, we provide secure solutions to meet your fears.</p>
+        </div>
+    </div>
+    <div id="about" class="container">
+        <h2 style="text-align: center;">About Us</h2>
+        <p>DeepShield is a machine learning based web application firewall: The purpose of this project is to investigate the potential of using machine 
+            learning techniques for intrusion detection on an application level. 
+            The algorithms to be tested are classifiers trained on HTTP payload data 
+            which will take a payload as input and decide whether the input contained malicious code or not. 
+            WAF will protect from XSS (Cross-site scripting), and SQL injections.</p>
+    </div>
+
+    <div class="container2">
+        <h2 class="dashboard-title">Dashboard</h2>
+        
+    <p class="dashboard-description">To check our real statistics, visit our dashboard page!</p>
+    </div>
+
+    <div class="container" id="dashboard">
+        
+        <!-- Cards will be dynamically added here -->
+    </div>
+
+    <script>
+        // Generate random numbers for movement
+        function getRandomNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        // Function to create a card
+        function createCard(title) {
+            const card = document.createElement('div');
+            card.classList.add('card1');
+            card.innerHTML = `
+                <h3>${title}</h3>
+                <p class="value">${getRandomNumber(0, 20000)}</p>
+                <p class="description">This month</p>
+            `;
+            return card;
+        }
+
+        // Function to update card values and animation
+        function updateValues() {
+            const cards = document.querySelectorAll('.card1');
+            cards.forEach(card => {
+                const valueElement = card.querySelector('.value');
+                const currentValue = parseFloat(valueElement.textContent);
+                const newValue = currentValue + getRandomNumber(-10, 10);
+                valueElement.textContent = Math.round(newValue * 100) / 100; // Round to 2 decimal places
+            });
+            requestAnimationFrame(updateValues);
+        }
+
+        // Create initial cards
+        const dashboard = document.getElementById('dashboard');
+        const titles = ['Total Users', 'Total Trials', 'Total Normal requests detected', 'Total Malicious requests detected', 'Detection Accuracy', 'Missed requests'];
+        titles.forEach(title => {
+            const card1 = createCard(title);
+            dashboard.appendChild(card1);
+        });
+
+        // Update card values and animation
+        updateValues();
+    </script>
+
+    <div id="team" class="container">
+        <h2 style="text-align: center;">Our Team</h2>
+        <div class="feature">
+            <div class="feature-item">
+                <img src="Monica.jpg" alt="Person 1">
+                <h3>Team Leader</h3>
+                <p>Responsible for leading and oragnizing the team. Also, responsible for coding and developing backend application.</p>
+            </div>
+            <div class="feature-item">
+                <img src="Samer.jpg" alt="Person 2">
+                <h3>Team member</h3>
+                <p>Responsible for creating creative ideas for our projects.</p>
+            </div>
+            <div class="feature-item">
+                <img src="Kevin.jpg" alt="Person 3">
+                <h3>Team member</h3>
+                <p>Responsible for coding and testing features of the application.</p>
+            </div>
+            <div class="feature-item">
+                <img src="Martina.jpg" alt="Person 4">
+                <h3>Team member</h3>
+                <p>Responsible for researching and gathering required information needed.</p>
+            </div>
+        </div>
+    </div>
+    <div id="contact" class="footer">
+        <p>Contact us at help@Deepshield.com</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+            <a href="https://www.twitter.com" class="fa fa-twitter"></a>
+            <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+</body>
+</html>

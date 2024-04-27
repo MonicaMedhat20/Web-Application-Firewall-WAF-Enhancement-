@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <title>DEEPSHIELD</title>
+    <link rel="stylesheet" href="style2.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-doughnutlabel"></script>
+
+</head>
+<body>
+    <header>
+        <img  src="deepshield.jpg" href="WAFHome.html" alt="DEEPSHIELD Logo" class="logo">
+        <h1>DEEPSHIELD</h1>
+    </header>
+    <nav>
+        <a href="WAFHome.html">Home</a>
+        <a href="Test.html">Demo</a>
+        <a href="WAFDashboard.html">Dashboard</a>
+        <a href="WAFContact.html">Contact</a>
+    </nav>
+    <div class="banner">
+        <div>
+            <h1>We Help Securing Businesses <br>to Grow and Succeed</h1>
+            <p>With our security expertise, we provide secure solutions to meet your fears.</p>
+        </div>
+    </div>
+    <div class="container" id="dashboard">
+        <!-- Cards will be dynamically added here  -->
+    </div>
+
+    <script>
+        // Function to create a card with donut chart
+        function createCard(title, data, labels, backgroundColors) {
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
+                <h3>${title}</h3>
+                <div class="chart-container">
+                    <canvas id="${title.replace(/\s/g, '')}Chart"></canvas>
+                    <div class="center-number">${data[0]}${title.includes('Accuracy') || title.includes('Missed') ? '%' : ''}</div>
+                </div>
+            `;
+
+            const ctx = card.querySelector(`#${title.replace(/\s/g, '')}Chart`).getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: [title.includes('Accuracy') || title.includes('Missed') ? data[0] : data[0], title.includes('Accuracy') || title.includes('Missed') ? 100 - data[0] : 20000 - data[0]],
+                        backgroundColor: [backgroundColors[0], '#f2f2f2']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutoutPercentage: 80, // Adjust the size of the hole in the center
+                    legend: {
+                        display: false
+                    },
+                    plugins: {
+                        doughnutlabel: {
+                            labels: [{
+                                text: ''
+                            }]
+                        }
+                    }
+                }
+            });
+
+            return card;
+        }
+
+        // Static data for each card
+        const staticData = [
+            [500],
+            [10000],
+            [4820],
+            [5180],
+            [92.8],
+            [7.2]
+        ];
+
+        // Create initial cards
+        const dashboard = document.getElementById('dashboard');
+        const titles = ['Total Users', 'Total Trials', 'Total Normal requests detected', 'Total Malicious requests detected', 'Detection Accuracy', 'Missed requests'];
+        const colors = ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0', '#9966ff', '#ff9f40'];
+        titles.forEach((title, index) => {
+            const data = staticData[index];
+            const labels = ['Covered', 'Remaining']; // Labels for the chart
+            const backgroundColors = [colors[index]]; // Random colors for each segment
+            const card = createCard(title, data, labels, backgroundColors);
+            dashboard.appendChild(card);
+        });
+    </script>
+
+    <div id="contact" class="footer">
+        <p>Contact us at help@Deepshield.com</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+            <a href="https://www.twitter.com" class="fa fa-twitter"></a>
+            <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+</body>
+</html>
