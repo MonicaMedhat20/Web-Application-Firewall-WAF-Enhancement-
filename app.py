@@ -25,10 +25,10 @@ with open('model2.pkl','rb') as model2_file:
 
 #stacking of two routes to be the same route (leading to the same page) 
 @app.route('/')
-@app.route('/home.html')
+@app.route('/home.html/')
 def home():
     return render_template('home.html')
-  
+    
 def classifyRequest(payload):
     resu = get_payload(payload)
     return float(model2.predict)
