@@ -8,7 +8,7 @@ import werkzeug
 import re
 
 #creating instance of the app
-app = Flask(__name__, static_folder= "./static")
+app = Flask(__name__, static_url_path='/static')
 
 model = pickle.load(open('model.pkl', '+rb')) #model generated for dataset1
 model2 = pickle.load(open('model2.pkl', '+rb')) #model generated for dataset2
