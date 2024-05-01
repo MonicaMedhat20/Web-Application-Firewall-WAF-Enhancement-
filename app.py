@@ -26,7 +26,7 @@ with open('model2.pkl','rb') as model2_file:
 #stacking of two routes to be the same route (leading to the same page) 
 @app.route('/')
 @app.route('/WAFHome.html/')
-def home():
+def WAFHome():
     return render_template('WAFHome.html')
     
 def classifyRequest(payload):
