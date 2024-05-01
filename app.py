@@ -29,6 +29,19 @@ with open('model2.pkl','rb') as model2_file:
 def WAFHome():
     return render_template('WAFHome.html')
     
+
+@app.route('/WAFDashboard.html/')
+def WAFDashboard():
+    return render_template('WAFDashboard.html')
+
+@app.route('/WAFContact.html/')
+def WAFContact():
+    return render_template('WAFContact.html')
+
+@app.route('/Test.html/')
+def Test():
+    return render_template('Test.html')
+
 def classifyRequest(payload):
     resu = get_payload(payload)
     return float(model2.predict)
@@ -56,9 +69,9 @@ def demo():
         return redirect(url_for('home'))
     return render_template('demo.html')
 
-@app.route('/demo.html/home.html/')
-def home2():
-    return render_template('home.html')
+# @app.route('/demo.html/home.html/')
+# def home2():
+#     return render_template('home.html')
 
 
 
