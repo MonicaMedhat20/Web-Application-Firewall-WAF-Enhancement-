@@ -25,7 +25,7 @@ def extract_headers_from_url(url):
         return None
 
 # Example usage
-url= "http://localhost:8080/tienda1/miembros/editar.jsp"
+url= "http://localhost:8080/tienda1/publico/carrito.jsp.java HTTP/1.1"
 headers = extract_headers_from_url(url)
 if headers:
     print("Extracted Headers:")
