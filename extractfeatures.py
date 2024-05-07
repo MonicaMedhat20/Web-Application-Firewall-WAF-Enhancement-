@@ -12,7 +12,7 @@ def extract_headers_from_url(url):
             'Accept-Encoding': response.request.headers.get('Accept-Encoding'),
             'Accept-Charset': response.request.headers.get('Accept-Charset'),
             'Language': response.request.headers.get('Language'),
-            'Host': response.request.headers.get('Host'),
+            # 'Host': response.request.headers.get('Host'),
             'Cookie': response.request.headers.get('Cookie'),
             'Content-Type': response.request.headers.get('Content-Type'),
             'Connection': response.request.headers.get('Connection'),
@@ -25,7 +25,7 @@ def extract_headers_from_url(url):
         return None
 
 # Example usage
-url= "https://www.miuegypt.edu.eg/"
+url= "http://localhost:8080/tienda1/miembros/editar.jsp"
 headers = extract_headers_from_url(url)
 if headers:
     print("Extracted Headers:")
