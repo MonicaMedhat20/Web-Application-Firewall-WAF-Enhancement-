@@ -8,7 +8,7 @@ import werkzeug
 import re
 
 #creating instance of the app
-app = Flask(__name__, static_url_path='/static')
+app = Flask(__name__, static_folder='./static')
 
 model = pickle.load(open('model.pkl', '+rb')) #model generated for dataset1
 model2 = pickle.load(open('model2.pkl', '+rb')) #model generated for dataset2
@@ -62,12 +62,15 @@ def classify_handler():
         'class_name': class_name
     } #return json 
 
-@app.route('/demo.html/', methods=['GET', 'POST'])
-def demo():
-    if (request.method == 'POST'):
-        payload = request.form.get('payload')
-        return redirect(url_for('home'))
-    return render_template('demo.html')
+
+
+
+# @app.route('/demo.html/', methods=['GET', 'POST'])
+# def demo():
+#     if (request.method == 'POST'):
+#         payload = request.form.get('payload')
+#         return redirect(url_for('home'))
+#     return render_template('demo.html')
 
 # @app.route('/demo.html/home.html/')
 # def home2():
