@@ -11,7 +11,7 @@ import re
 app = Flask(__name__, static_folder='./static')
 
 model = pickle.load(open('model.pkl', '+rb')) #model generated for dataset1
-model2 = pickle.load(open('model2.pkl', '+rb')) #model generated for dataset2
+# model2 = pickle.load(open('model2.pkl', '+rb')) #model generated for dataset2
 
 
 
@@ -20,8 +20,8 @@ model2 = pickle.load(open('model2.pkl', '+rb')) #model generated for dataset2
 with open('model.pkl','rb') as model_file:
     RF_model = pickle.load(model_file)
 
-with open('model2.pkl','rb') as model2_file:
-    RF_model2 = pickle.load(model2_file)
+# with open('model2.pkl','rb') as model2_file:
+#     RF_model2 = pickle.load(model2_file)
 
 #stacking of two routes to be the same route (leading to the same page) 
 @app.route('/')

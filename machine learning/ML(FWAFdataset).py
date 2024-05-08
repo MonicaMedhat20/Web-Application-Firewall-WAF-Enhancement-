@@ -129,7 +129,7 @@ print("Test error: {:.1%}".format(error_rt))
 
 
 #generating a model
-import pickle
+# import pickle
 
-pickle.dump(random_forest_model,open('model2.pkl', '+wb'))
-model2 = pickle.load(open('model2.pkl', '+rb'))
+# pickle.dump(random_forest_model,open('model2.pkl', '+wb'))
+# model2 = pickle.load(open('model2.pkl', '+rb'))
