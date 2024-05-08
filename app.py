@@ -81,38 +81,38 @@ def classify_handler():
 
 
 # Basic WAF function
-def waf(request):
-    # SQL injection prevention
-    for value in request.values.values():
-        if any(keyword in value for keyword in ["SELECT", "INSERT", "UPDATE", "DELETE", "FROM", "WHERE"]):
-            abort(403)
-    # Cross-Site Scripting (XSS) prevention
-    for value in request.values.values():
-        if "<script>" in value:
-            abort(403)
-    return None
+# def waf(request):
+#     # SQL injection prevention
+#     for value in request.values.values():
+#         if any(keyword in value for keyword in ["SELECT", "INSERT", "UPDATE", "DELETE", "FROM", "WHERE"]):
+#             abort(403)
+#     # Cross-Site Scripting (XSS) prevention
+#     for value in request.values.values():
+#         if "<script>" in value:
+#             abort(403)
+#     return None
 
-@app.route('/request')
-def index():
-    waf(request)
-# Define a simple feature extraction function (replace with your actual feature extraction logic)
-def extract_features(payload):
-    # Example: Just count the number of characters in the request
-    return [[len(payload)]]
+# @app.route('/request')
+# def index():
+#     waf(request)
+# # Define a simple feature extraction function (replace with your actual feature extraction logic)
+# def extract_features(payload):
+#     # Example: Just count the number of characters in the request
+#     return [[len(payload)]]
 
-# Route to handle form submission and make predictions
-@app.route('/predict', methods=['POST'])
-def predict():
-    if request.method == 'POST':
-        request_data = request.form['request_data']
+# # Route to handle form submission and make predictions
+# @app.route('/predict', methods=['POST'])
+# def predict():
+#     if request.method == 'POST':
+#         request_data = request.form['request_data']
         # Extract features using your feature extraction function
-        features = extract_features(request_data)
-        # Make a prediction using the pre-trained model
-        prediction = model.predict(features)
-        prediction = model2.predict(features)
-        # Display the result on the web page
-        result = 'Malicious' if prediction[1] == 0 else 'Normal'
-        return render_template('home.html', request_data=request_data, result=result)
+        # features = extract_features(request_data)
+        # # Make a prediction using the pre-trained model
+        # prediction = model.predict(features)
+        # prediction = model2.predict(features)
+        # # Display the result on the web page
+        # result = 'Malicious' if prediction[1] == 0 else 'Normal'
+        # return render_template('home.html', request_data=request_data, result=result)
 
 
 if __name__ == "__main__":
