@@ -44,7 +44,7 @@ def Test():
 
 def classifyRequest(payload):
     resu = get_payload(payload)
-    return float(model2.predict)
+    return float(model.predict)
 
 @app.route('/classify', methods = ['POST'])
 def classify_handler():
