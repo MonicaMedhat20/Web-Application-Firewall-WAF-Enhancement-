@@ -20,12 +20,8 @@ from sklearn.model_selection import train_test_split
 
 #imports related to classifiers
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import precision_score
-from sklearn.metrics import accuracy_score
-from sklearn.metrics import recall_score
-from sklearn.metrics import f1_score
-from sklearn.metrics import roc_auc_score
-from sklearn.metrics import mean_absolute_error
+from sklearn.metrics import precision_score, accuracy_score, recall_score, f1_score, roc_auc_score, mean_absolute_error
+
 
 
 
@@ -45,6 +41,7 @@ csic_data.head()
 print('Tail')
 csic_data.tail()
 
+
 #printing the columns of the dataset
 print('Dataset Columns')
 csic_data.columns
@@ -53,10 +50,9 @@ csic_data.columns
 
 
 #visualizing URL format
-feature_names=[ 'Unnamed: 0','Method', 'User-Agent', 'Pragma', 'Cache-Control',
+feature_names=['Unnamed: 0' ,'Method', 'User-Agent', 'Pragma', 'Cache-Control',
        'Accept', 'Accept-encoding', 'Accept-charset', 'language', 'host',
-       'cookie', 'content-type', 'connection', 'lenght', 'content','classification',
-        'URL']
+       'cookie', 'content-type', 'connection', 'lenght', 'content','classification', 'URL']
 X=csic_data[feature_names]
 print(X)
 
@@ -491,6 +487,8 @@ print('Done!')
 
 
 RT_predictions= random_forest_model.predict(x_ts)
+
+#printing evaluation metrics
 print('MAE', mean_absolute_error(y_ts, RT_predictions))
 print("Accuracy", accuracy_score(y_ts, RT_predictions))
 print("Precision", precision_score(y_ts, RT_predictions, average='weighted', labels=np.unique(RT_predictions)))
@@ -507,7 +505,9 @@ pickle.dump(random_forest_model,open('model.pkl', '+wb'))
 model = pickle.load(open('model.pkl', '+rb'))
 
 
-
+#loading the pre-trained machine learning model
+with open('model.pkl','rb') as model_file:
+    RF_model = pickle.load(model_file)
 
 
 
