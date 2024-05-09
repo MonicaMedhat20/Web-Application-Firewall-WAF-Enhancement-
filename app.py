@@ -34,9 +34,11 @@ def WAFHome():
 def WAFDashboard():
     return render_template('WAFDashboard.html')
 
+
 @app.route('/WAFContact.html/')
 def WAFContact():
     return render_template('WAFContact.html')
+
 
 @app.route('/Test.html/')
 def Test():

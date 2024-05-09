@@ -198,6 +198,11 @@
     .container h2{
         text-decoration: underline;
     }
+
+    .container2 input{
+        height: 25px;
+        width: 200px;
+    }
     
     /* Dashboard Page CSS */
     .card {
@@ -257,7 +262,7 @@
         <p>Insert the payload -- Based on ML model -- it'll be either malicious or safe payload</p>
         <div class="section">
             <input class="textbox" type="text" placeholder="Payload" id="payload">
-            <button class="button" onclick="isMalicious();">Is Malicious</button>
+            <button class="button" onclick="isMalicious();" required>Is Malicious</button>
         </div>
     </div>
 
