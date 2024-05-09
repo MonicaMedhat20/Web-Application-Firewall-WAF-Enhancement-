@@ -32,9 +32,9 @@ def WAFContact():
     return render_template('WAFContact.html')
 
 
-@app.route('/Test.html/')
+@app.route('/Test.php/')
 def Test():
-    return render_template('Test.html')
+    return render_template('Test.php')
 
 # Create Flask application
 app = Flask(__name__)
@@ -56,9 +56,9 @@ def predict():
         # If the result is 1, check the URL with URLChecker
         url_check_result = url_checker.check_url(url)
         if url_check_result == 0:
-            return jsonify({"result": "Benign"})
+            return jsonify({"result": "Normal"})
         else:
-            return jsonify({"result": "Attack"})
+            return jsonify({"result": "Malicious"})
     
 
 if __name__ == "__main__":
