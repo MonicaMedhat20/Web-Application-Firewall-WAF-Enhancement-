@@ -7,18 +7,20 @@ from keras.models import load_model
 import werkzeug
 import re
 
+from Final.main_code import URLChecker, predict_from_url
+
 #creating instance of the app
 app = Flask(__name__, static_folder='./static')
 
-model = pickle.load(open('model.pkl', '+rb')) #model generated for dataset1
+# model = pickle.load(open('model.pkl', '+rb')) #model generated for dataset1
 # model2 = pickle.load(open('model2.pkl', '+rb')) #model generated for dataset2
 
 
 
 
 #loading the pre-trained machine learning model
-with open('model.pkl','rb') as model_file:
-    RF_model = pickle.load(model_file)
+# with open('model.pkl','rb') as model_file:
+#     RF_model = pickle.load(model_file)
 
 # with open('model2.pkl','rb') as model2_file:
 #     RF_model2 = pickle.load(model2_file)
@@ -44,25 +46,64 @@ def WAFContact():
 def Test():
     return render_template('Test.html')
 
+# Create Flask application
+app = Flask(__name__)
+
+@app.route('/predict', methods=['POST'])
+def predict():
+    """Flask endpoint to predict security risks based on a submitted URL."""
+    data = request.json
+    url = data.get('url', '')
+
+    # Load the URL checker
+    with open('url_checker.pkl', 'rb') as f:
+        url_checker = pickle.load(f)
+
+    # Predict security risks
+    result = predict_from_url(url)
+
+    if result == 1:
+        # If the result is 1, check the URL with URLChecker
+        url_check_result = url_checker.check_url(url)
+        if url_check_result == 0:
+            return jsonify({"result": "Benign"})
+        else:
+            return jsonify({"result": "Attack"})
+    
+
+if __name__ == "__main__":
+    # Save the URLChecker instance
+    checker = URLChecker('combined_balanced_urls.csv')  # Update with actual path
+    with open('url_checker.pkl', 'wb') as f:
+        pickle.dump(checker, f)
+
+    app.run(port=9005)
+
+
+
+
+
+
+
 # def analyze_url(url):
 #     resu = get_url(url_for)
 #     return float(ml_model.predict)
 
-@app.route('/classify', methods = ['POST'])
-def classify_handler():
-    payload = request.form['payload']
-    result =get_payload(payload)  
-    class_name = 'Malicious' if result == 1 else 'Normal'
-    print('payload:', payload)
-    print('result:', result)
+# @app.route('/classify', methods = ['POST'])
+# def classify_handler():
+#     payload = request.form['payload']
+#     result =get_payload(payload)  
+#     class_name = 'Malicious' if result == 1 else 'Normal'
+#     print('payload:', payload)
+#     print('result:', result)
 
-    print('class_name:', class_name)
+#     print('class_name:', class_name)
 
-    return {
-        'payload' : payload,
-        'result' : result,
-        'class_name': class_name
-    } #return json 
+#     return {
+#         'payload' : payload,
+#         'result' : result,
+#         'class_name': class_name
+#     } #return json 
 
 
 
