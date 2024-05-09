@@ -44,9 +44,9 @@ def WAFContact():
 def Test():
     return render_template('Test.html')
 
-def classifyRequest(payload):
-    resu = get_payload(payload)
-    return float(model.predict)
+# def analyze_url(url):
+#     resu = get_url(url_for)
+#     return float(ml_model.predict)
 
 @app.route('/classify', methods = ['POST'])
 def classify_handler():
@@ -82,65 +82,3 @@ def classify_handler():
 
 
 
-# Basic WAF function
-# def waf(request):
-#     # SQL injection prevention
-#     for value in request.values.values():
-#         if any(keyword in value for keyword in ["SELECT", "INSERT", "UPDATE", "DELETE", "FROM", "WHERE"]):
-#             abort(403)
-#     # Cross-Site Scripting (XSS) prevention
-#     for value in request.values.values():
-#         if "<script>" in value:
-#             abort(403)
-#     return None
-
-# @app.route('/request')
-# def index():
-#     waf(request)
-# # Define a simple feature extraction function (replace with your actual feature extraction logic)
-# def extract_features(payload):
-#     # Example: Just count the number of characters in the request
-#     return [[len(payload)]]
-
-# # Route to handle form submission and make predictions
-# @app.route('/predict', methods=['POST'])
-# def predict():
-#     if request.method == 'POST':
-#         request_data = request.form['request_data']
-        # Extract features using your feature extraction function
-        # features = extract_features(request_data)
-        # # Make a prediction using the pre-trained model
-        # prediction = model.predict(features)
-        # prediction = model2.predict(features)
-        # # Display the result on the web page
-        # result = 'Malicious' if prediction[1] == 0 else 'Normal'
-        # return render_template('home.html', request_data=request_data, result=result)
-
-
-if __name__ == "__main__":
-    app.run(debug=True, port= 5000)
-
-
-
-# # Your WAF logic goes here
-# def check_url(url):
-#     # Placeholder logic - replace this with your actual WAF logic
-#     if "example.com" in url:
-#         return {"message": "URL is allowed"}
-#     else:
-#         return {"message": "URL is blocked"}
-
-# @app.route("/")
-# def index():
-#     return app.send_static_file("home.html")
-
-# @app.route("/check_url", methods=["POST"])
-# def check_url_route():
-#     data = request.json
-#     url = data.get("url")
-#     if url:
-#         result = check_url(url)
-#         return jsonify(result)
-#     else:
-#         return jsonify({"message": "Invalid request"}), 400
-    
