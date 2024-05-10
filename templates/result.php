@@ -71,7 +71,7 @@ if ($response_data) {
     <table>
         <tr>
             <th>Result</th>
-            <td> Normal </td>
+            <td> Malicious </td>
         </tr>
     </table>
     <p>
