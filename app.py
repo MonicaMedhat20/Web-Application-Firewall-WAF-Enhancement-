@@ -44,12 +44,6 @@ def result1():
 def result():
     return render_template('result.php')
 
-# @app.route('/result.php/Test.php')
-# def redirection():
-#     return render_template('Test.php')
-
-# # Create Flask application
-# app = Flask(__name__)
 
 @app.route('/predict', methods=['POST'])
 def predict():
