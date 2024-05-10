@@ -36,13 +36,13 @@ def WAFContact():
 def Test():
     return render_template('Test.php')
 
-# @app.route('/Test.php/result.php')
-# def result1():
-#     return render_template('result.php')
+@app.route('/Test.php/result.php')
+def result1():
+    return render_template('result.php')
 
-# @app.route('/result.php/')
-# def result():
-#     return render_template('result.php')
+@app.route('/result.php/')
+def result():
+    return render_template('result.php')
 
 # @app.route('/result.php/Test.php')
 # def redirection():
@@ -51,35 +51,35 @@ def Test():
 # # Create Flask application
 # app = Flask(__name__)
 
-# @app.route('/predict', methods=['POST'])
-# def predict():
-#     """Flask endpoint to predict security risks based on a submitted URL."""
-#     data = request.json
-#     url = data.get('url', '')
+@app.route('/predict', methods=['POST'])
+def predict():
+    """Flask endpoint to predict security risks based on a submitted URL."""
+    data = request.json
+    url = data.get('url', '')
 
-#     # Load the URL checker
-#     with open('url_checker.pkl', 'rb') as f:
-#         url_checker = pickle.load(f)
+    # Load the URL checker
+    with open('url_checker.pkl', 'rb') as f:
+        url_checker = pickle.load(f)
 
-#     # Predict security risks
-#     result = predict_from_url(url)
+    # Predict security risks
+    result = predict_from_url(url)
 
-#     if result == 1:
-#         # If the result is 1, check the URL with URLChecker
-#         url_check_result = url_checker.check_url(url)
-#         if url_check_result == 0:
-#             return jsonify({"result": "Normal"})
-#         else:
-#             return jsonify({"result": "Malicious"})
+    if result == 1:
+        # If the result is 1, check the URL with URLChecker
+        url_check_result = url_checker.check_url(url)
+        if url_check_result == 0:
+            return jsonify({"result": "Normal"})
+        else:
+            return jsonify({"result": "Malicious"})
     
 
 if __name__ == "__main__":
     # Save the URLChecker instance
-    # checker = URLChecker('combined_balanced_urls.csv')  # Update with actual path
-    # with open('url_checker.pkl', 'wb') as f:
-    #     pickle.dump(checker, f)
+    checker = URLChecker('combined_balanced_urls.csv')  # Update with actual path
+    with open('url_checker.pkl', 'wb') as f:
+        pickle.dump(checker, f)
 
-    app.run(port=5000)
+    app.run(port=9005)
 
 
 
