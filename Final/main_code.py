@@ -171,4 +171,4 @@ if __name__ == "__main__":
     with open('url_checker.pkl', 'wb') as f:
         pickle.dump(checker, f)
 
-    app.run(port=9005)
+    app.run(port=5000)

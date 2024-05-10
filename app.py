@@ -36,6 +36,18 @@ def WAFContact():
 def Test():
     return render_template('Test.php')
 
+# @app.route('/Test.php/result.php')
+# def result1():
+#     return render_template('result.php')
+
+# @app.route('/result.php/')
+# def result():
+#     return render_template('result.php')
+
+# @app.route('/result.php/Test.php')
+# def redirection():
+#     return render_template('Test.php')
+
 # # Create Flask application
 # app = Flask(__name__)
 
@@ -62,10 +74,10 @@ def Test():
     
 
 if __name__ == "__main__":
-#     # Save the URLChecker instance
-#     checker = URLChecker('combined_balanced_urls.csv')  # Update with actual path
-#     with open('url_checker.pkl', 'wb') as f:
-#         pickle.dump(checker, f)
+    # Save the URLChecker instance
+    # checker = URLChecker('combined_balanced_urls.csv')  # Update with actual path
+    # with open('url_checker.pkl', 'wb') as f:
+    #     pickle.dump(checker, f)
 
     app.run(port=5000)
 

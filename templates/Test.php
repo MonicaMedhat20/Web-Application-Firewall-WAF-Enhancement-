@@ -259,39 +259,37 @@
     </div>
     <div id="about" class="container2">
         <h1 style="text-decoration: underline;">Scan Request</h1>
-        <p>Insert the payload -- Based on ML model -- it'll be either malicious or safe payload</p>
+        <p>Insert the URL -- Based on ML model -- it'll be either malicious or safe URL</p>
         <div class="section">
-            <input class="textbox" type="text" placeholder="Payload" id="payload">
-            <button class="button" onclick="isMalicious();" required>Is Malicious</button>
+            <form action="result.php" method="POST">
+            <label for="url">Enter URL to check:</label>
+            <input class="textbox" type="text" placeholder="URL" id="url" required>
+            <button class="button" type="submit">Is Malicious</button>
+            </form>
         </div>
     </div>
-
+    
     <!-- <script>
 
-        function isMalicious() {
-          var payload = document.getElementById('payload').value;
-          var maliciousWords = ['<script>', 'select', 'from', 'where', 'table', 'alert'];
-          var isMalicious = false;
-          for (var i = 0; i < maliciousWords.length; i++) {
-            if (payload.includes(maliciousWords[i])) {
-              isMalicious = true;
-              break;
-            }
-          }
-          if (isMalicious) {
-            alert('Error 403 Forbidden: ' + payload + ' is malicious', {color: 'red'});  
-    } else {
-            alert('Payload: ' + payload + ' is safe', {color: 'green'});
-          }
-          redirectToHome();
-        }
-      </script> -->
+    //     function isMalicious() {
+    //       var payload = document.getElementById('payload').value;
+    //       var maliciousWords = ['<script>', 'select', 'from', 'where', 'table', 'alert'];
+    //       var isMalicious = false;
+    //       for (var i = 0; i < maliciousWords.length; i++) {
+    //         if (payload.includes(maliciousWords[i])) {
+    //           isMalicious = true;
+    //           break;
+    //         }
+    //       }
+    //       if (isMalicious) {
+    //         alert('Error 403 Forbidden: ' + payload + ' is malicious', {color: 'red'});  
+    // } else {
+    //         alert('Payload: ' + payload + ' is safe', {color: 'green'});
+    //       }
+    //       redirectToHome();
+    //     }
+    //   </script> -->
 
-
-      <?php
-
-      ?>
-      
           </div>
     <div id="contact" class="footer">
         <p>Contact us at help@Deepshield.com</p>
