@@ -5,7 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 from urllib.parse import urlparse
 
-# Lists of common SQL injection and XSS patterns
+# Lists of common injection patterns
 SQL_INJECTION_PATTERNS = [
     "select", "union", "insert", "update", "delete", "drop", "table", "information_schema",
     "--", ";", "/*", "*/", "@@", "char", "concat", "xp_", "sp_", "exec", "' OR '1'='1"
@@ -16,13 +16,99 @@ XSS_PATTERNS = [
     "document.write", "eval(", "<iframe", "<img", "src="
 ]
 
+COMMAND_INJECTION_PATTERNS = [
+    "&&", "||", "|", ";", "`", "$(", "${", "<(", ">", "<", "&", "||", "wget", "curl",
+    "nc", "netcat", "bash", "sh", "cmd", "powershell", "ping", "traceroute", "nslookup",
+    "ftp", "scp", "tftp", "chmod", "chown", "rm", "mv", "cp", "echo"
+]
+
+CODE_INJECTION_PATTERNS = [
+    "import", "eval", "exec", "compile", "__import__", "subprocess", "pickle", "marshal",
+    "os.system", "os.popen", "sys.modules", "sys.path", "open(", "file(", "popen(", 
+    "execfile(", "builtins.", "globals(", "locals("
+]
+
+LDAP_INJECTION_PATTERNS = [
+    "*", "(", ")", "\\", "|", "&", "!", "'", "\"", "~", "{", "}", "[", "]",
+    "=", "><", "substring", "str()", "where", "substring", "bin", "hex", "or"
+]
+
+XML_INJECTION_PATTERNS = [
+    "<![CDATA[", "<!ENTITY", "<!DOCTYPE", "<?xml", "SYSTEM", "PUBLIC", "<![", "]]>", "&lt;", "&gt;",
+    "&amp;", "&quot;", "&apos;", "<root", "<child", "<parent", "</", "/>"
+]
+
+XPATH_INJECTION_PATTERNS = [
+    "'", "\"", "or", "and", "not", "=", "<", ">", "<=", ">=", "substring", "contains",
+    "starts-with", "count", "concat", "//", "/..", "/.", "[", "]", "@"
+]
+
+NOSQL_INJECTION_PATTERNS = [
+    "$ne", "$eq", "$gt", "$lt", "$gte", "$lte", "$in", "$nin", "$regex", "$options",
+    "$and", "$or", "$nor", "$not", "$exists", "$type", "$expr", "$jsonSchema",
+    "$mod", "$size", "$all", "$elemMatch"
+]
+
+SMTP_INJECTION_PATTERNS = [
+    "\r\n", "\n", "\r", "bcc:", "cc:", "to:", "from:", "subject:", "reply-to:", "message-id:",
+    "return-path:", "x-", "content-type:", "content-transfer-encoding:", "content-disposition:",
+    "mime-version:", "X-", "bcc=", "cc="
+]
+
+CRLF_INJECTION_PATTERNS = [
+    "%0d", "%0a", "\r", "\n", "%0D%0A", "\r\n", "HTTP/1.1", "200 OK", "Set-Cookie:", "Content-Length:",
+    "Location:", "Connection:", "Transfer-Encoding:", "chunked"
+]
+
+TEMPLATE_INJECTION_PATTERNS = [
+    "{{", "{%", "%}", "}}", "{#", "#}", "${", "}}", "<%= ", "<%=", "%>", "<%=", "config", "data",
+    "request", "session", "url", "import", "safe", "for", "in", "endfor", "if", "endif", "else",
+    "eval(", "exec(", "execfile(", "run(", "compile(", "globals(", "locals(", "builtins."
+]
+
+SSI_INJECTION_PATTERNS = [
+    "<!--#exec", "<!--#include", "<!--#echo", "<!--#config", "<!--#flastmod", "<!--#fsize",
+    "<!--#printenv", "<!--#set", "<!--#setvar", "<!--#if", "<!--#elif", "<!--#endif", "<!--#else"
+]
+
+
 def contains_security_risks(text):
-    """Check if the input text contains any potential SQL injection or XSS patterns."""
+    """Check if the input text contains any potential injection patterns."""
     text_lower = text.lower()
     for pattern in SQL_INJECTION_PATTERNS:
         if pattern in text_lower:
             return 1
     for pattern in XSS_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in COMMAND_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in CODE_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in LDAP_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in XML_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in XPATH_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in NOSQL_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in SMTP_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in CRLF_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in TEMPLATE_INJECTION_PATTERNS:
+        if pattern in text_lower:
+            return 1
+    for pattern in SSI_INJECTION_PATTERNS:
         if pattern in text_lower:
             return 1
     return 0
