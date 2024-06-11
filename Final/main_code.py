@@ -31,7 +31,7 @@ def contains_security_risks(text):
 def extract_features_from_url(url):
     """Extract HTTP request features from a given URL."""
     http_request = {
-        'Method': 'GET',
+        'Method': 'GET', 'POST'
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)',
         'Pragma': 'no-cache',
         'Cache-Control': 'no-cache',
