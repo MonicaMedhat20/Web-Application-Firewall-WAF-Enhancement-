@@ -44,7 +44,7 @@ if ($response_data) {
     echo 'Failed to parse response.';
 } -->
 
-
+<!-- 
 
 <html>
 <head>
@@ -78,4 +78,39 @@ if ($response_data) {
         Return to previous page <a href="Test.php"> Click here </a>
     </p>
 </body>
-</html>
+</html> -->
+
+<?php
+// if ($_SERVER["REQUEST_METHOD"] == "POST") {
+//     $url = $_POST['url'];
+
+//     // Flask API URL
+//     $api_url = 'http://localhost:9005/predict';
+
+    // Initialize cURL session
+    // $ch = curl_init($api_url);
+
+    // // Set cURL options
+    // $payload = json_encode(array("url" => $url));
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+    // curl_setopt($ch, CURLOPT_POST, true);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+    //     'Content-Type: application/json',
+    //     'Content-Length: ' . strlen($payload))
+    // );
+
+    // Execute cURL session and fetch response
+    // $result = curl_exec($ch);
+    // curl_close($ch);
+
+    // Decode JSON response
+    // $response = json_decode($result, true);
+
+    // Display the result
+    echo "<h1>URL Scan Result</h1>";
+    echo "<p>URL: $url</p>";
+    echo "<p>Result: " . $response['result'] . "</p>";
+// }
+?>
