@@ -6,14 +6,9 @@ import tensorflow as tf
 from keras.models import load_model
 import werkzeug
 import re
-
 from Final.main_code import URLChecker, predict_from_url
-
 #creating instance of the app
 app = Flask(__name__, static_folder='./static')
-
-
-
 
 #stacking of two routes to be the same route (leading to the same page) 
 @app.route('/')
@@ -21,16 +16,13 @@ app = Flask(__name__, static_folder='./static')
 def WAFHome():
     return render_template('WAFHome.html')
     
-
 @app.route('/WAFDashboard.html/')
 def WAFDashboard():
     return render_template('WAFDashboard.html')
 
-
 @app.route('/WAFContact.html/')
 def WAFContact():
     return render_template('WAFContact.html')
-
 
 @app.route('/Test.php/')
 def Test():
@@ -39,7 +31,6 @@ def Test():
 @app.route('/result.php/')
 def result():
     return render_template('result.php')
-
 
 @app.route('/predict', methods=['POST'])
 def predict():
