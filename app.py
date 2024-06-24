@@ -32,6 +32,10 @@ def Test():
 def result():
     return render_template('result.php')
 
+@app.route('/result.php/Test.php')
+def back():
+    return render_template('Test.php')
+
 @app.route('/predict', methods=['POST'])
 def predict():
     """Flask endpoint to predict security risks based on a submitted URL."""
