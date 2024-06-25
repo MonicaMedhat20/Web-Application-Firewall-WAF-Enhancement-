@@ -28,6 +28,10 @@ def WAFContact():
 def Test():
     return render_template('Test.php')
 
+@app.route('/Test.php/result.php/')
+def forward():
+    return render_template('result.php')
+
 @app.route('/result.php/')
 def result():
     return render_template('result.php')

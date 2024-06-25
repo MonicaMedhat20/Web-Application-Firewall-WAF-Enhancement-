@@ -237,6 +237,10 @@
         font-size: 36px; /* Specify font size */
         color: #333; /* Specify font color */
     }
+
+    b:link{
+        color: #fff;
+    }
     </style>
     
 </head>
@@ -264,7 +268,7 @@
             <form action="result.php" method="POST">
             <label for="url">Enter URL to check:</label>
             <input class="textbox" type="text" placeholder="URL" id="url" required>
-            <button class="button" type="submit">Is Malicious</button>
+            <button class="button" type="submit"> <a href="result.php" class="b:link"> Is Malicious</button> 
             </form>
         </div>
     </div>
