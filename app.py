@@ -15,7 +15,19 @@ app = Flask(__name__, static_folder='./static')
 @app.route('/WAFHome.html/')
 def WAFHome():
     return render_template('WAFHome.html')
-    
+
+@app.route('/WAFHome.html/Test.php/')
+def demo():
+    return render_template('Test.php')
+
+@app.route('/WAFHome.html/WAFDashboard.html/')
+def WAFDash():
+    return render_template('WAFDashboard.html')
+
+@app.route('/WAFHome.html/WAFContact.html/')
+def WAFCON():
+    return render_template('WAFContact.html')
+
 @app.route('/WAFDashboard.html/')
 def WAFDashboard():
     return render_template('WAFDashboard.html')
@@ -39,6 +51,26 @@ def result():
 @app.route('/result.php/Test.php')
 def back():
     return render_template('Test.php')
+
+@app.route('/Test.php/result.php/Test.php')
+def back2():
+    return render_template('Test.php')
+
+
+@app.route('/WAFHome.html/Test.php/')
+def dem():
+    return render_template('Test.php')
+
+
+@app.route('/WAFHome.html/Test.php/WAFDashboard.html/')
+def dash1():
+    return render_template('WAFDashboard.html')
+
+
+@app.route('/WAFHome.html/Test.php/WAFDashboard.html/WAFContact.html/')
+def Con1():
+    return render_template('WAFContact.html')
+
 
 @app.route('/predict', methods=['POST'])
 def predict():

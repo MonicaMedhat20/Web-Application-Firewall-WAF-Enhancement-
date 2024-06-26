@@ -353,7 +353,8 @@ if ($response_data) {
         }
         th {
             text-align: right;
-            background-color: rgb(255, 71, 76);
+            background-color: rgb(152, 251, 152);
+            /* rgb(255, 71, 76) */
          }
          th, td {
             padding: 10px;
@@ -363,7 +364,7 @@ if ($response_data) {
     <table>
         <tr>
             <th>Result</th>
-            <td> Malicious </td>
+            <td> Normal </td>
         </tr>
     </table>
     <p>
