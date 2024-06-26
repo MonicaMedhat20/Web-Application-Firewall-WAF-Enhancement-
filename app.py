@@ -72,6 +72,12 @@ def Con1():
     return render_template('WAFContact.html')
 
 
+
+@app.route('/WAFDashboard.html/Test.php/')
+def dem2():
+    return render_template('Test.php')
+
+
 @app.route('/predict', methods=['POST'])
 def predict():
     """Flask endpoint to predict security risks based on a submitted URL."""
