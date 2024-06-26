@@ -5,6 +5,7 @@ from sklearn.preprocessing import LabelEncoder
 import pickle
 from urllib.parse import urlparse
 
+
 # Lists of common injection patterns
 SQL_INJECTION_PATTERNS = [
     "select", "union", "insert", "update", "delete", "drop", "table", "information_schema",
@@ -256,5 +257,9 @@ if __name__ == "__main__":
     checker = URLChecker('combined_balanced_urls.csv')  # Update with actual path
     with open('url_checker.pkl', 'wb') as f:
         pickle.dump(checker, f)
-
+    result = predict_from_url('csic_database.csv') 
+    with open('predict_from_url', 'wb') as f:
+        pickle.dump(result,f)
+    
     app.run(port=9005)
+
