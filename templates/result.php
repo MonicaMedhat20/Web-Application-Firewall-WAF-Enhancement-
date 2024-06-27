@@ -81,7 +81,6 @@ if ($response_data) {
 </html> -->
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -353,18 +352,26 @@ if ($response_data) {
         }
         th {
             text-align: right;
-            background-color: rgb(255, 71, 76);
+            background-color: rgb(152, 251, 152);
             /* rgb(152, 251, 152) light green */
             /* rgb(255, 71, 76) light red*/
-         }
+        }
+
+        th {
+            text-align: right;
+            background-color: rgb(255, 71, 76);
+        }
+    
          th, td {
             padding: 10px;
     }
     </style>
     </p>
     <table>
+        
         <tr>
             <th>Result</th>
+
             <td> Malicious </td>
         </tr>
     </table>
@@ -374,7 +381,9 @@ if ($response_data) {
     </div>
 
  
-
+<?php
+if ($result)
+?>
 
 
 

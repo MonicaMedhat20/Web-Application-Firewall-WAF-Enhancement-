@@ -98,7 +98,6 @@ def predict():
             return jsonify({"result": "Normal"})
         else:
             return jsonify({"result": "Malicious"})
-    
 
 if __name__ == "__main__":
     # Save the URLChecker instance

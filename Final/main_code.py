@@ -189,6 +189,7 @@ def preprocess_and_encode(url_df):
 
     return url_df[labels]
 
+
 # Model prediction function with security risk check
 def predict_from_url(url, model_path='model.pkl'):
     """Predict the classification for a given URL using a pre-trained model."""
@@ -257,9 +258,6 @@ if __name__ == "__main__":
     checker = URLChecker('combined_balanced_urls.csv')  # Update with actual path
     with open('url_checker.pkl', 'wb') as f:
         pickle.dump(checker, f)
-    result = predict_from_url('csic_database.csv') 
-    with open('predict_from_url', 'wb') as f:
-        pickle.dump(result,f)
-    
+        
     app.run(port=9005)
 
