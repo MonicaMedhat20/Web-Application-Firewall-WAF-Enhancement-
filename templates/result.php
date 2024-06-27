@@ -371,7 +371,6 @@ if ($response_data) {
         
         <tr>
             <th>Result</th>
-
             <td> Malicious </td>
         </tr>
     </table>
@@ -381,9 +380,6 @@ if ($response_data) {
     </div>
 
  
-<?php
-if ($result)
-?>
 
 
 

@@ -270,29 +270,15 @@
             <input class="textbox" type="text" placeholder="URL" id="url" required>
             <button class="button" type="submit"> <a href="result.php" class="b:link"> Is Malicious</button> 
             </form>
+           
         </div>
     </div>
-    
     <!-- <script>
-
-    //     function isMalicious() {
-    //       var payload = document.getElementById('payload').value;
-    //       var maliciousWords = ['<script>', 'select', 'from', 'where', 'table', 'alert'];
-    //       var isMalicious = false;
-    //       for (var i = 0; i < maliciousWords.length; i++) {
-    //         if (payload.includes(maliciousWords[i])) {
-    //           isMalicious = true;
-    //           break;
-    //         }
-    //       }
-    //       if (isMalicious) {
-    //         alert('Error 403 Forbidden: ' + payload + ' is malicious', {color: 'red'});  
-    // } else {
-    //         alert('Payload: ' + payload + ' is safe', {color: 'green'});
-    //       }
-    //       redirectToHome();
-    //     }
-    //   </script> -->
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent the default form submission
+            window.location.href = "templates/result.php"; // Replace with your target URL
+        }
+       </script> -->
 
           </div>
     <div id="contact" class="footer">
@@ -307,3 +293,19 @@
 </body>
 </html>
 
+<!-- // var url = document.getElementById('payload').value;
+//        var maliciousWords = ['<script>', 'select', 'from', 'where', 'table', 'alert']; -->
+<!-- //        var isMalicious = false;
+//          for (var i = 0; i < maliciousWords.length; i++) {
+//            if (payload.includes(maliciousWords[i])) {
+//                isMalicious = true;
+//                break;
+//              }
+//            }
+//            if (isMalicious) {
+//              alert('Error 403 Forbidden: ' + payload + ' is malicious', {color: 'red'});  
+//      } else {
+//             alert('Payload: ' + payload + ' is safe', {color: 'green'});
+//           }
+//           redirectToHome();
+//        } -->
