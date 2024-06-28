@@ -1,84 +1,3 @@
-<!-- result.php -->
-<!-- 
-// The URL of the Flask API
-$api_url = 'http://127.0.0.1:9005/predict';
-
-// The URL to check
-$url_to_check = 'https://www.google.com/';
-
-// Create an array with the URL to send in the POST request
-$data = array('url' => $url_to_check);
-
-// Convert the data array to JSON format
-$data_json = json_encode($data);
-
-// Initialize cURL session
-$ch = curl_init($api_url);
-
-// Set the options for the cURL request
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-curl_setopt($ch, CURLOPT_POST, true);
-curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
-
-// Execute the cURL request and capture the response
-$response = curl_exec($ch);
-
-// Check for cURL errors
-if ($response === false) {
-    $error = curl_error($ch);
-    curl_close($ch);
-    die('cURL error: ' . $error);
-}
-
-// Close the cURL session
-curl_close($ch);
-
-// Decode the JSON response
-$response_data = json_decode($response, true);
-
-// Output the response
-if ($response_data) {
-    echo 'Result: ' . $response_data['result'];
-} else {
-    echo 'Failed to parse response.';
-} -->
-
-<!-- 
-
-<html>
-<head>
-<title> WAF Detection Result </title>
-<style>
-    table, td, th {
-      border: 1px solid black;
-    }
-    table {
-      border-collapse: collapse;
-    }
-    th {
-      text-align: right;
-      background-color: rgb(203, 240, 227);
-    }
-    th, td {
-      padding: 10px;
-    }
-</style>
-
-</head>
-<body>
-    <h1>WAF Detection Result</h1>
-    <table>
-        <tr>
-            <th>Result</th>
-            <td> Malicious </td>
-        </tr>
-    </table>
-    <p>
-        Return to previous page <a href="Test.php"> Click here </a>
-    </p>
-</body>
-</html> -->
 
 
 <!DOCTYPE html>
@@ -87,7 +6,7 @@ if ($response_data) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <title>DEEPSHIELD</title>
-    <!-- <link rel="stylesheet" href="static/style2.css"> -->
+    <link rel="stylesheet" href="static/style2.css">
     <title> Request Detection Scanner
     </title>
     <style>
@@ -393,5 +312,101 @@ if ($response_data) {
         </div>
     </div>
 </body>
-</html>
+</html> 
 
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>DEEPSHIELD - URL Scan Result</title>
+</head>
+<body>
+    <header>
+        <img src="static/deepshield.jpg" href="WAFHome.html" alt="DEEPSHIELD Logo" class="logo">
+        <h1>DEEPSHIELD</h1>
+    </header>
+    <nav>
+        <a href="WAFHome.html">Home</a>
+        <a href="Test.php">Demo</a>
+        <a href="WAFDashboard.html">Dashboard</a>
+        <a href="WAFContact.html">Contact</a>
+    </nav>
+    <div class="banner">
+        <div>
+            <h1>We Help Securing Businesses <br>to Grow and Succeed</h1>
+            <p>With our security expertise, we provide secure solutions to meet your fears.</p>
+        </div>
+    </div>
+    <div id="about" class="container2">
+        <h1 style="text-decoration: underline;">URL Scan Result</h1>
+        <p>Insert the URL - Based on ML model - it'll be either a malicious or safe URL</p>
+        <div class="section">
+        
+            // Check if the form was submitted and URL is provided
+           // if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["url"])) {
+            //    $url_to_check = $_POST["url"];
+
+                // The URL of the Flask API
+              //  $api_url = 'http://127.0.0.1:9005/predict';
+
+                // Create an array with the URL to send in the POST request
+              //  $data = array('url' => $url_to_check);
+
+                // Convert the data array to JSON format
+               // $data_json = json_encode($data);
+
+                // Initialize cURL session
+               // $ch = curl_init($api_url);
+
+                // Set the options for the cURL request
+                // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+                // curl_setopt($ch, CURLOPT_POST, true);
+                // curl_setopt($ch, CURLOPT_POSTFIELDS, $data_json);
+
+                // Execute the cURL request and capture the response
+                // $response = curl_exec($ch);
+
+                // Check for cURL errors
+            //     if ($response === false) {
+            //         $error = curl_error($ch);
+            //         curl_close($ch);
+            //         echo '<p>cURL error: ' . htmlspecialchars($error) . '</p>';
+            //     } else {
+            //         // Close the cURL session
+            //         curl_close($ch);
+
+            //         // Decode the JSON response
+            //         $response_data = json_decode($response, true);
+
+            //         // Output the response
+            //         if ($response_data && isset($response_data['result'])) {
+            //             echo '<p>URL: ' . htmlspecialchars($url_to_check) . '</p>';
+            //             echo '<p>Scan Result: ' . htmlspecialchars($response_data['result']) . '</p>';
+            //         } else {
+            //             echo '<p>Failed to retrieve valid response.</p>';
+            //         }
+            //     }
+            // } else {
+            //     echo '<p>Error: URL is empty.</p>';
+            // }
+            
+//         </div>
+//     </div>
+//     <div id="contact" class="footer">
+//         <p>Contact us at help@Deepshield.com</p>
+//         <div class="social-icons">
+//             <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+//             <a href="https://www.twitter.com" class="fa fa-twitter"></a>
+//             <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+//             <a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+//         </div>
+//     </div>
+// </body>
+// </html> -->

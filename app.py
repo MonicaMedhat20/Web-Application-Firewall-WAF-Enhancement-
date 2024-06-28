@@ -310,7 +310,7 @@ class URLChecker:
             return 1
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST','GET'])
 def predict():
     """Flask endpoint to predict security risks based on a submitted URL."""
     data = request.json

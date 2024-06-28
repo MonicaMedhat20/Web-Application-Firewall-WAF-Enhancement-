@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">    <title>DEEPSHIELD</title>
-    <!-- <link rel="stylesheet" href="static/style2.css"> -->
+    <link rel="stylesheet" href="static/style2.css">
     <title> Request Detection Scanner
     </title>
     <style>
@@ -273,14 +273,14 @@
            
         </div>
     </div>
-    <!-- <script>
+     <!-- <script>
         function handleSubmit(event) {
             event.preventDefault(); // Prevent the default form submission
             window.location.href = "templates/result.php"; // Replace with your target URL
         }
-       </script> -->
+       </script>  -->
 
-          </div>
+        </div>
     <div id="contact" class="footer">
         <p>Contact us at help@Deepshield.com</p>
         <div class="social-icons">
@@ -291,7 +291,9 @@
         </div>
     </div>
 </body>
-</html>
+</html> 
+
+
 
 <!-- // var url = document.getElementById('payload').value;
 //        var maliciousWords = ['<script>', 'select', 'from', 'where', 'table', 'alert']; -->
@@ -309,3 +311,56 @@
 //           }
 //           redirectToHome();
 //        } -->
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>DEEPSHIELD</title>
+</head>
+<body>
+    <header>
+        <img src="static/deepshield.jpg" href="WAFHome.html" alt="DEEPSHIELD Logo" class="logo">
+        <h1>DEEPSHIELD</h1>
+    </header>
+    <nav>
+        <a href="WAFHome.html">Home</a>
+        <a href="Test.php">Demo</a>
+        <a href="WAFDashboard.html">Dashboard</a>
+        <a href="WAFContact.html">Contact</a>
+    </nav>
+    <div class="banner">
+        <div>
+            <h1>We Help Securing Businesses <br>to Grow and Succeed</h1>
+            <p>With our security expertise, we provide secure solutions to meet your fears.</p>
+        </div>
+    </div>
+    <div id="about" class="container2">
+        <h1 style="text-decoration: underline;">Scan Request</h1>
+        <p>Insert the URL -- Based on ML model -- it'll be either malicious or safe URL</p>
+        <div class="section">
+            <form action="http://127.0.0.1:9005/predict" method="POST">
+                <label for="url">Enter URL to check:</label>
+                <input class="textbox" type="text" name="url" placeholder="URL" id="url" required>
+                <button class="button" type="submit">Check</button> 
+            </form>
+        </div>
+    </div>
+    <div id="contact" class="footer">
+        <p>Contact us at help@Deepshield.com</p>
+        <div class="social-icons">
+            <a href="https://www.facebook.com" class="fa fa-facebook"></a>
+            <a href="https://www.twitter.com" class="fa fa-twitter"></a>
+            <a href="https://www.linkedin.com"><i class="fa fa-linkedin"></i></a>
+            <a href="https://www.instagram.com"><i class="fa fa-instagram"></i></a>
+        </div>
+    </div>
+</body>
+</html> -->
