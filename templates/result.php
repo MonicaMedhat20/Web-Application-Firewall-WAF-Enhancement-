@@ -638,29 +638,62 @@
 <body>
 
 
-    <script>
+    <!-- <script> -->
+        <!-- // // Function to fetch and display result from Flask endpoint
+        // function fetchResult() {
+        //     fetch('http://127.0.0.1:9005/predict', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        
+        //     })
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         document.getElementById('result').innerText = data.result;
+        //     })
+        //     .catch(error => {
+        //         console.error('Error fetching data:', error);
+        //         document.getElementById('result').innerText = 'Failed to fetch result.';
+        //     });
+        // }
+
+        // // Call fetchResult when the page loads
+        // document.addEventListener('DOMContentLoaded', fetchResult); -->
+        <!-- </script> -->
+
+        <script>
         // Function to fetch and display result from Flask endpoint
         function fetchResult() {
-            fetch('http://127.0.0.1:9005/predict', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ url: '<?php echo $_POST["url"]; ?>' })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById('result').innerText = data.result;
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                document.getElementById('result').innerText = 'Failed to fetch result.';
-            });
+            const urlParams = new URLSearchParams(window.location.search);
+            const url = urlParams.get('url');
+            
+            if (url) {
+                fetch('http://127.0.0.1:9005/predict', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ url: url })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerText = data.result;
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                    document.getElementById('result').innerText = 'Failed to fetch result.';
+                });
+            } else {
+                document.getElementById('result').innerText = 'No URL provided.';
+            }
         }
 
         // Call fetchResult when the page loads
         document.addEventListener('DOMContentLoaded', fetchResult);
     </script>
+
+ 
 
     <div id="contact" class="footer">
         <p>Contact us at help@Deepshield.com</p>

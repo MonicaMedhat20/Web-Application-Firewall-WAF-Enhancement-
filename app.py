@@ -315,7 +315,8 @@ def predict():
     """Flask endpoint to predict security risks based on a submitted URL."""
     data = request.json
     url = data.get('url', '')
-
+    print(f"Received URL: {url}")
+    
     # Load the URL checker
     with open('url_checker.pkl', 'rb') as f:
         url_checker = pickle.load(f)
@@ -330,6 +331,7 @@ def predict():
             return jsonify({"result": "Normal"})
         else:
             return jsonify({"result": "Malicious"})
+
 
 if __name__ == "__main__":
     # Save the URLChecker instance
