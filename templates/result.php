@@ -646,7 +646,7 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-            body: JSON.stringify({ url: '<?php echo $_POST["url"]; ?>' })
+            body: JSON.stringify({ url: '<?=$_POST['url']?>' })
             })
             .then(response => response.json())
             .then(data => {
