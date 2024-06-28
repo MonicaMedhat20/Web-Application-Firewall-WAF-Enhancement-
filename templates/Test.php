@@ -631,8 +631,8 @@
         <h1 style="text-decoration: underline;">Scan Request</h1>
         <p>Insert the URL -- Based on ML model -- it'll be either malicious or safe URL</p>
         <div class="section">
-            <!-- <form id="urlForm"> -->
-            <form action = "result.php" method="get" id="urlForm">
+            <form id="urlForm">
+            <!-- <form action = "result.php" method="get" id="urlForm"> -->
                 <label for="url">Enter URL to check:</label>
                 <input class="textbox" type="text" name="url" placeholder="URL" id="url" required>
                 <button class="button" type="submit">Is Malicious</button> 

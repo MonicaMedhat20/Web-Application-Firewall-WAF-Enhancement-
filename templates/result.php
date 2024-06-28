@@ -638,31 +638,31 @@
 <body>
 
 
-    <!-- <script> -->
-        <!-- // // Function to fetch and display result from Flask endpoint
-        // function fetchResult() {
-        //     fetch('http://127.0.0.1:9005/predict', {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json'
-        //         },
-        
-        //     })
-        //     .then(response => response.json())
-        //     .then(data => {
-        //         document.getElementById('result').innerText = data.result;
-        //     })
-        //     .catch(error => {
-        //         console.error('Error fetching data:', error);
-        //         document.getElementById('result').innerText = 'Failed to fetch result.';
-        //     });
-        // }
+    <script> 
+        // Function to fetch and display result from Flask endpoint
+        function fetchResult() {
+            fetch('http://127.0.0.1:9005/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            body: JSON.stringify({ url: '<?php echo $_POST["url"]; ?>' })
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('result').innerText = data.result;
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                document.getElementById('result').innerText = 'Failed to fetch result.';
+            });
+        }
 
-        // // Call fetchResult when the page loads
-        // document.addEventListener('DOMContentLoaded', fetchResult); -->
-        <!-- </script> -->
+        // Call fetchResult when the page loads
+        document.addEventListener('DOMContentLoaded', fetchResult); 
+        </script>
 
-        <script>
+        <!-- <script>
         // Function to fetch and display result from Flask endpoint
         function fetchResult() {
             const urlParams = new URLSearchParams(window.location.search);
@@ -691,7 +691,7 @@
 
         // Call fetchResult when the page loads
         document.addEventListener('DOMContentLoaded', fetchResult);
-    </script>
+    </script> -->
 
  
 
